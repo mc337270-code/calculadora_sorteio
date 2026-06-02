@@ -149,7 +149,15 @@ button:hover{
     type="number"
     id="bolas"
     min="1"
-    placeholder="Ex.: 75">
+    placeholder="Total de bolas (Ex.: 75)">
+
+<br>
+
+<input
+    type="number"
+    id="sorteadas"
+    min="1"
+    placeholder="Bolas sorteadas (Ex.: 10)">
 
 <br>
 
@@ -248,23 +256,35 @@ function calcularBingo(){
     let bolas =
         parseInt(document.getElementById("bolas").value);
 
-    if(isNaN(bolas) || bolas <= 0){
+    let sorteadas =
+        parseInt(document.getElementById("sorteadas").value);
+
+    if(
+        isNaN(bolas) ||
+        isNaN(sorteadas) ||
+        bolas <= 0 ||
+        sorteadas <= 0 ||
+        sorteadas > bolas
+    ){
 
         document.getElementById("resultadoBingo").innerHTML =
-        "Digite um valor válido.";
+        "Digite valores válidos.";
 
         return;
     }
 
     let porcentagem =
-        ((1 / bolas) * 100).toFixed(2);
+        ((sorteadas / bolas) * 100);
+
+    let chance =
+        bolas / sorteadas;
 
     document.getElementById("resultadoBingo").innerHTML =
         "Chance: 1 em " +
-        bolas.toLocaleString("pt-BR") +
+        chance.toFixed(2) +
         "<br><br>" +
         "Porcentagem: " +
-        porcentagem +
+        porcentagem.toFixed(2) +
         "%";
 }
 
