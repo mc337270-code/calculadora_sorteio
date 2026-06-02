@@ -243,6 +243,7 @@ function calcular(){
 }
 
 /* SORTEIO */
+
 function calcularSorteio(){
 
     let totalBilhetes =
@@ -255,8 +256,7 @@ function calcularSorteio(){
         isNaN(totalBilhetes) ||
         isNaN(meusBilhetes) ||
         totalBilhetes <= 0 ||
-        meusBilhetes <= 0 ||
-        meusBilhetes > totalBilhetes
+        meusBilhetes <= 0
     ){
 
         document.getElementById("resultadoSorteio").innerHTML =
@@ -268,18 +268,22 @@ function calcularSorteio(){
     let porcentagem =
         (meusBilhetes / totalBilhetes) * 100;
 
+    if (porcentagem > 100) {
+        porcentagem = 100;
+    }
+
     let chance =
         totalBilhetes / meusBilhetes;
 
     document.getElementById("resultadoSorteio").innerHTML =
         "Chance: 1 em " +
-        chance.toFixed(0) +
+        chance.toFixed(2) +
         "<br><br>" +
         "Porcentagem: " +
         porcentagem.toFixed(2) +
         "%";
 }
-
+    
 </script>
 
 </body>
