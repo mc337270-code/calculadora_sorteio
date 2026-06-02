@@ -137,21 +137,21 @@ button:hover{
 
     <h1>Sorteio de Prêmios</h1>
 
-    <p>Informe os dados do sorteio:</p>
+  <p>Informe os bilhetes do sorteio:</p>
 
-    <input
-        type="number"
-        id="participantes"
-        min="1"
-        placeholder="Quantidade de participantes">
+  <input
+    type="number"
+    id="totalBilhetes"
+    min="1"
+    placeholder="Quantidade total de bilhetes">
 
-    <br>
+<br>
 
-    <input
-        type="number"
-        id="vencedores"
-        min="1"
-        placeholder="Quantidade de vencedores">
+<input
+    type="number"
+    id="meusBilhetes"
+    min="1"
+    placeholder="Quantidade de bilhetes que você possui">
 
     <br>
 
@@ -243,21 +243,20 @@ function calcular(){
 }
 
 /* SORTEIO */
-
 function calcularSorteio(){
 
-    let participantes =
-        parseInt(document.getElementById("participantes").value);
+    let totalBilhetes =
+        parseInt(document.getElementById("totalBilhetes").value);
 
-    let vencedores =
-        parseInt(document.getElementById("vencedores").value);
+    let meusBilhetes =
+        parseInt(document.getElementById("meusBilhetes").value);
 
     if(
-        isNaN(participantes) ||
-        isNaN(vencedores) ||
-        participantes <= 0 ||
-        vencedores <= 0 ||
-        vencedores > participantes
+        isNaN(totalBilhetes) ||
+        isNaN(meusBilhetes) ||
+        totalBilhetes <= 0 ||
+        meusBilhetes <= 0 ||
+        meusBilhetes > totalBilhetes
     ){
 
         document.getElementById("resultadoSorteio").innerHTML =
@@ -267,10 +266,10 @@ function calcularSorteio(){
     }
 
     let porcentagem =
-        (vencedores / participantes) * 100;
+        (meusBilhetes / totalBilhetes) * 100;
 
     let chance =
-        participantes / vencedores;
+        totalBilhetes / meusBilhetes;
 
     document.getElementById("resultadoSorteio").innerHTML =
         "Chance: 1 em " +
