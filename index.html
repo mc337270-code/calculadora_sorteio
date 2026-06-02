@@ -9,6 +9,26 @@
 <style>
 
 body{
+
+<div id="inicio" class="container">
+
+    <h1>🎲 Calculadora de Probabilidades</h1>
+
+    <p>Escolha uma opção:</p>
+
+    <button onclick="mostrarMega()">
+        🍀 Mega-Sena
+    </button>
+
+    <br><br>
+
+    <button onclick="mostrarBingo()">
+        🎱 Bingo
+    </button>
+
+</div>
+
+    
     margin:0;
     font-family:Arial, sans-serif;
     background:linear-gradient(135deg,#00995D,#00B86B);
@@ -76,8 +96,8 @@ button:hover{
 </head>
 <body>
 
-<div class="container">
-
+<div id="mega" class="container" style="display:none;">
+    
     <div class="logo">🍀</div>
 
     <h1>Mega-Sena</h1>
@@ -98,6 +118,40 @@ button:hover{
     </button>
 
     <div class="resultado" id="resultado"></div>
+
+<br><br>
+
+    <div id="bingo" class="container" style="display:none;">
+
+    <h1>🎱 Bingo</h1>
+
+    <p>Informe quantas bolas existem no sorteio:</p>
+
+    <input
+        type="number"
+        id="bolas"
+        min="1"
+        placeholder="Ex.: 75">
+
+    <br>
+
+    <button onclick="calcularBingo()">
+        Calcular
+    </button>
+
+    <div id="resultadoBingo" class="resultado"></div>
+
+    <br><br>
+
+    <button onclick="voltar()">
+        ← Voltar ao Menu
+    </button>
+
+</div>
+
+<button onclick="voltar()">
+    ← Voltar ao Menu
+</button>
 
 </div>
 
