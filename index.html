@@ -82,7 +82,7 @@ button:hover{
 
     <h1>Mega-Sena</h1>
 
-    <p>Calculadora de Probabilidades</p>
+    <p>Calcule suas chances de ganhar na Mega-Sena</p>
 
     <input
         type="number"
@@ -134,11 +134,18 @@ function calcular(){
     let total = combinacao(60,6);
     let apostas = combinacao(numeros,6);
 
-    let chance = Math.round(total / apostas);
+  let chance = Math.round(total / apostas);
 
-    document.getElementById("resultado").innerHTML =
-        "Chance: 1 em " +
-        chance.toLocaleString("pt-BR");
+let porcentagem =
+    ((apostas / total) * 100).toFixed(10);
+
+document.getElementById("resultado").innerHTML =
+    "Chance: 1 em " +
+    chance.toLocaleString("pt-BR") +
+    "<br><br>" +
+    "Porcentagem: " +
+    porcentagem +
+    "%";
 }
 
 </script>
