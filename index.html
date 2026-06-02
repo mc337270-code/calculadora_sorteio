@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -81,21 +80,19 @@ button:hover{
 
 <div id="inicio" class="container">
 
+    <h1>🎲 Calculadora de Probabilidades</h1>
 
-<h1>🎲 Calculadora de Probabilidades</h1>
+    <p>Escolha uma opção:</p>
 
-<p>Escolha uma opção:</p>
+    <button onclick="mostrarMega()">
+        🍀 Mega-Sena
+    </button>
 
-<button onclick="mostrarMega()">
-    🍀 Mega-Sena
-</button>
+    <br><br>
 
-<br><br>
-
-<button onclick="mostrarBingo()">
-    🎱 Bingo
-</button>
-
+    <button onclick="mostrarSorteio()">
+        🎁 Sorteio de Prêmios
+    </button>
 
 </div>
 
@@ -103,76 +100,72 @@ button:hover{
 
 <div id="mega" class="container" style="display:none;">
 
-```
-<div class="logo">🍀</div>
+    <div class="logo">🍀</div>
 
-<h1>Mega-Sena</h1>
+    <h1>Mega-Sena</h1>
 
-<p>Calcule suas chances de ganhar na Mega-Sena</p>
+    <p>Calcule suas chances de ganhar na Mega-Sena</p>
 
-<input
-    type="number"
-    id="numeros"
-    min="6"
-    max="20"
-    placeholder="Digite de 6 a 20 números">
+    <input
+        type="number"
+        id="numeros"
+        min="6"
+        max="20"
+        placeholder="Digite de 6 a 20 números">
 
-<br>
+    <br>
 
-<button onclick="calcular()">
-    Calcular Chance
-</button>
+    <button onclick="calcular()">
+        Calcular Chance
+    </button>
 
-<div class="resultado" id="resultado"></div>
+    <div class="resultado" id="resultado"></div>
 
-<br>
+    <br>
 
-<button onclick="voltar()">
-    ← Voltar ao Menu
-</button>
-```
+    <button onclick="voltar()">
+        ← Voltar ao Menu
+    </button>
 
 </div>
 
-<!-- TELA BINGO -->
+<!-- TELA SORTEIO -->
 
-<div id="bingo" class="container" style="display:none;">
+<div id="sorteio" class="container" style="display:none;">
 
-```
-<div class="logo">🎱</div>
+    <div class="logo">🎁</div>
 
-<h1>Bingo</h1>
+    <h1>Sorteio de Prêmios</h1>
 
-<p>Informe o total de bolas do sorteio</p>
+    <p>Informe os dados do sorteio:</p>
 
-<input
-    type="number"
-    id="bolas"
-    min="1"
-    placeholder="Total de bolas (Ex.: 75)">
+    <input
+        type="number"
+        id="participantes"
+        min="1"
+        placeholder="Quantidade de participantes">
 
-<br>
+    <br>
 
-<input
-    type="number"
-    id="sorteadas"
-    min="1"
-    placeholder="Bolas sorteadas (Ex.: 10)">
+    <input
+        type="number"
+        id="vencedores"
+        min="1"
+        placeholder="Quantidade de vencedores">
 
-<br>
+    <br>
 
-<button onclick="calcularBingo()">
-    Calcular Chance
-</button>
+    <button onclick="calcularSorteio()">
+        Calcular Chance
+    </button>
 
-<div class="resultado" id="resultadoBingo"></div>
+    <div class="resultado" id="resultadoSorteio"></div>
 
-<br>
+    <br>
 
-<button onclick="voltar()">
-    ← Voltar ao Menu
-</button>
-```
+    <button onclick="voltar()">
+        ← Voltar ao Menu
+    </button>
 
 </div>
 
@@ -186,17 +179,17 @@ function mostrarMega(){
     document.getElementById("mega").style.display = "block";
 }
 
-function mostrarBingo(){
+function mostrarSorteio(){
 
     document.getElementById("inicio").style.display = "none";
-    document.getElementById("bingo").style.display = "block";
+    document.getElementById("sorteio").style.display = "block";
 }
 
 function voltar(){
 
     document.getElementById("inicio").style.display = "block";
     document.getElementById("mega").style.display = "none";
-    document.getElementById("bingo").style.display = "none";
+    document.getElementById("sorteio").style.display = "none";
 }
 
 /* MEGA-SENA */
@@ -249,39 +242,39 @@ function calcular(){
         "%";
 }
 
-/* BINGO */
+/* SORTEIO */
 
-function calcularBingo(){
+function calcularSorteio(){
 
-    let bolas =
-        parseInt(document.getElementById("bolas").value);
+    let participantes =
+        parseInt(document.getElementById("participantes").value);
 
-    let sorteadas =
-        parseInt(document.getElementById("sorteadas").value);
+    let vencedores =
+        parseInt(document.getElementById("vencedores").value);
 
     if(
-        isNaN(bolas) ||
-        isNaN(sorteadas) ||
-        bolas <= 0 ||
-        sorteadas <= 0 ||
-        sorteadas > bolas
+        isNaN(participantes) ||
+        isNaN(vencedores) ||
+        participantes <= 0 ||
+        vencedores <= 0 ||
+        vencedores > participantes
     ){
 
-        document.getElementById("resultadoBingo").innerHTML =
+        document.getElementById("resultadoSorteio").innerHTML =
         "Digite valores válidos.";
 
         return;
     }
 
     let porcentagem =
-        ((sorteadas / bolas) * 100);
+        (vencedores / participantes) * 100;
 
     let chance =
-        bolas / sorteadas;
+        participantes / vencedores;
 
-    document.getElementById("resultadoBingo").innerHTML =
+    document.getElementById("resultadoSorteio").innerHTML =
         "Chance: 1 em " +
-        chance.toFixed(2) +
+        chance.toFixed(0) +
         "<br><br>" +
         "Porcentagem: " +
         porcentagem.toFixed(2) +
